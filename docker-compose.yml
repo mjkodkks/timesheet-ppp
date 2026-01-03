@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  timesheet-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: timesheet-ppp
+    restart: unless-stopped
+    ports:
+      - "4343:4343"
+    environment:
+      - NODE_ENV=production
+    env_file:
+      - .env
+    networks:
+      - timesheet-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:4343"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+networks:
+  timesheet-network:
+    driver: bridge

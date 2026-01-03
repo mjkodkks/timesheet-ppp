@@ -1,0 +1,14 @@
+node_modules
+bun.lock
+.git
+.gitignore
+.env
+.env.*
+*.log
+.DS_Store
+.vscode
+.idea
+dist
+build
+README.md
+server

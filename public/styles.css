@@ -1,0 +1,54 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --purple-color: #e5dfec;
+  --red-color: #e5b8b7;
+  --grey-color: #B7B7B7;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  color: black;
+  background-color: white;
+  font-size: 12px;
+  padding: 1rem;
+}
+
+table {
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+table th {
+  width: 200px;
+  text-align: center;
+}
+
+table td:nth-child(1) {
+  text-align: center;
+}
+
+table td:nth-child(2) {
+  text-align: center;
+}
+
+table td:nth-child(3) {
+  text-align: center;
+}
+
+.weekend {
+  &.sat {
+    background-color: var(--purple-color);
+  }
+
+  &.sun {
+    background-color: var(--red-color);
+  }
+}
+
+.holiday {
+  background-color: var(--grey-color);
+}
