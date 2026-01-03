@@ -33,7 +33,6 @@ function isSun(date) {
 
 function isBankHoliday(date) {
     const dateString = date.toLocaleDateString('en-CA');
-    console.log('Checking bank holiday for date:', dateString);
     return bankHolidays.find((holiday) => holiday.date === dateString);
 }
 
@@ -73,7 +72,6 @@ function createTable(createDate) {
     console.log(lastDate);
     for (let dateNo = 1; dateNo <= lastDate; dateNo++) {
         const date = new Date(myYear, myMonth, dateNo);
-        console.log(date);
         const dayName = date.toLocaleDateString('th-TH', { weekday: 'long' });
         const row = document.createElement('tr');
         if (isWeekend(date)) {
@@ -109,7 +107,6 @@ function callHoliday() {
         .then((data) => {
             console.log('Success:', data);
             bankHolidays = data;
-            console.log('Bank Holidays:', bankHolidays);
         })
         .catch((error) => {
             console.error('Error:', error);
