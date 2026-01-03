@@ -41,25 +41,30 @@ const app = new Elysia()
       if (!year) {
         year = yearQuery;
       }
-      const url = Bun.env.API_URL_FROM_WEB + `/holidaycalendar_copy.model.${year}.json` || "";
-      // console.log(url)
+      const url =
+        Bun.env.API_URL_FROM_WEB + `/holidaycalendar_copy.model.${year}.json` ||
+        "";
+
       const rawResponse = await fetch(url);
-      const response = await rawResponse.json() as HolidayCalendarResponse;
-      // console.log("Fetched holiday page:", response);
+      const response = (await rawResponse.json()) as HolidayCalendarResponse;
+
       const formattedHolidays = response.holidayCalendarLists.map((item) => {
-        const formattedDay = item.date.split(" ")[1]; // ดึงเฉพาะตัวเลขวันที่
+        const formattedDay = item.date.split(" ")[1]; // get only day number
         const monthTH = item.month;
         const month = monthsTHToNumber(monthTH);
         const yearBuddhist = item.year;
-        const year = (parseInt(yearBuddhist) - 543).toString(); // แปลงเป็น ค.ศ.
-        const formattedDate = `${year}-${month}-${formattedDay.padStart(2, '0')}`;
+        const year = (parseInt(yearBuddhist) - 543).toString(); // convert to Gregorian year
+        const formattedDate = `${year}-${month}-${formattedDay.padStart(
+          2,
+          "0"
+        )}`;
         console.log("Formatted date:", formattedDate);
-        
+
         return {
           date: formattedDate,
           description: item.holidayDescription,
-        }
-      })
+        };
+      });
 
       return formattedHolidays;
     } catch (error) {

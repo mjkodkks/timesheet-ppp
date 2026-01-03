@@ -1,15 +1,32 @@
-# Elysia with Bun runtime
-
-## Getting Started
-To get started with this template, simply paste this command into your terminal:
-```bash
-bun create elysia ./elysia-example
-```
+# TimeSheet PPP
 
 ## Development
-To start the development server run:
-```bash
+
+1) Create ```.env``` from this template get url [bot holiday website](https://www.bot.or.th/th/financial-institutions-holiday.html)
+   
+   ```
+   API_URL_FROM_WEB=<paste here>
+   API_URL=https://gateway.api.bot.or.th
+   ACCESS_TOKEN_BOT=<paste here>
+   ```
+2) Run
+
+```
+bun install
+
 bun run dev
 ```
 
-Open http://localhost:3000/ with your browser to see the result.
+
+
+
+## Production
+
+use docker-compose
+
+```
+docker-compose up --build
+```
+
+Create By [Elysia](https://elysiajs.com/) with Bun runtime ❤️
+
