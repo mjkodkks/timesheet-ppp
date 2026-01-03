@@ -2,8 +2,12 @@ import { Elysia } from "elysia";
 import { staticPlugin } from "@elysiajs/static";
 import { HolidayCalendarResponse } from "../types/shared";
 import { monthsTHToNumber } from "./utility";
+import { cors } from '@elysiajs/cors'
 
 const app = new Elysia()
+  .use(cors(
+    {origin: ["https://timesheet-ppp.onrender.com", "http://localhost:4343", ]}
+  ))
   .use(
     await staticPlugin({
       prefix: "/",

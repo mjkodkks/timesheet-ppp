@@ -102,7 +102,7 @@ function createTable(createDate) {
 }
 
 function callHoliday() {
-    return fetch('http://localhost:4343/holidays-from-web', {
+    return fetch('/holidays-from-web', {
         method: 'GET',
     })
         .then((response) => response.json())
